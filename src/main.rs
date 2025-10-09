@@ -28,10 +28,10 @@ fn main() -> Result<()> {
     // Parse command-line arguments
     let args = Cli::parse();
     
-    // Run the application with parsed arguments
+    // Run the GovernancePortal application with parsed arguments
     // This line can be made more readable by adding a comment describing the purpose of the run function
-    run(args.verbose, args.input, args.output)
-    // Example of a meaningful improvement: add error handling for the run function
-    // This is a minimal but meaningful improvement
-    .expect("Failed to run GovernancePortal application")
+    match run(args.verbose, args.input, args.output) {
+        Ok(_) => Ok(()),
+        Err(e) => Err(format!("Failed to run GovernancePortal application: {}", e)),
+    }
 }
